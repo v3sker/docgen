@@ -88,7 +88,7 @@ const CaseCreditSchema = yup.object().shape({
   id: yup.number()
     .typeError("ID должен состоять только из цифр")
     .required('ID обязателен')
-    .test('7ch', 'ID должен состоять из 7 цифр', val => val.toString().length === 7),
+    .test('6ch', 'ID должен состоять из 7 цифр', val => val.toString().length === 6),
   amount: yup.number()
     .typeError('Сумма кредита должна состоять только из цифр')
     .required('Сумма кредита обязательна')

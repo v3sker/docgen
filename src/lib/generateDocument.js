@@ -34,7 +34,7 @@ async function generateDocumentTemplate(data) {
   const creditFinishDate = format(finishDate, 'dd.MM.yyyy');
 
   const getCreditInterest = (amount) => {
-    return Math.floor(amount * 0.5 / 365 * 30)
+    return Math.round(amount * 0.5 / 365 * 30)
   };
 
   const payments = [];
@@ -51,11 +51,11 @@ async function generateDocumentTemplate(data) {
     if (i === 0) {
       payment.body = 0;
     } else if (i === 1) {
-      payment.body = Math.floor(creditAmount * 0.5);
+      payment.body = Math.round(creditAmount * 0.5);
     } else if (i === 2) {
-      payment.body = Math.floor(creditAmount * 0.2);
+      payment.body = Math.round(creditAmount * 0.2);
     } else {
-      payment.body = Math.floor(creditAmount * 0.1);
+      payment.body = Math.round(creditAmount * 0.1);
     }
 
     if (i > 0) {
@@ -64,7 +64,7 @@ async function generateDocumentTemplate(data) {
     payment.interest = getCreditInterest(creditRemainder);
 
     if (i === 0) {
-      payment.commission = Math.floor(creditAmount * 0.072);
+      payment.commission = Math.round(creditAmount * 0.072);
     } else {
       payment.commission = 0;
     }
